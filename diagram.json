@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "author": "Duy Anh Nguyen",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 316.8, "left": -119.96, "attrs": {} },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "co2",
+      "top": 56.3,
+      "left": -240.2,
+      "attrs": { "label": "CO2 Level" }
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd",
+      "top": -130.97,
+      "left": 208,
+      "attrs": { "pins": "digital" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "fan",
+      "top": 25.2,
+      "left": 138.2,
+      "attrs": { "color": "blue", "label": "FAN" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 71.15,
+      "left": 96,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "alert",
+      "top": -51.6,
+      "left": 99.8,
+      "attrs": { "color": "red", "label": "ALARM" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 3.95,
+      "left": 67.2,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "buzzer",
+      "top": -141.6,
+      "left": 59.4,
+      "attrs": { "label": "BUZZER" }
+    }
+  ],
+  "connections": [
+    [ "esp:34", "co2:SIG", "green", [] ],
+    [ "esp:3V3", "co2:VCC", "red", [] ],
+    [ "esp:GND.1", "co2:GND", "black", [] ],
+    [ "esp:22", "lcd:RS", "orange", [] ],
+    [ "esp:21", "lcd:E", "yellow", [] ],
+    [ "esp:16", "lcd:D4", "green", [] ],
+    [ "esp:17", "lcd:D5", "blue", [] ],
+    [ "esp:18", "lcd:D6", "purple", [] ],
+    [ "esp:19", "lcd:D7", "gray", [] ],
+    [ "esp:3V3", "lcd:VCC", "red", [] ],
+    [ "esp:GND.2", "lcd:GND", "black", [] ],
+    [ "esp:25", "r1:1", "blue", [] ],
+    [ "r1:2", "fan:A", "blue", [] ],
+    [ "fan:C", "esp:GND.1", "black", [] ],
+    [ "esp:26", "r2:1", "red", [] ],
+    [ "r2:2", "alert:A", "red", [] ],
+    [ "alert:C", "esp:GND.1", "black", [] ],
+    [ "esp:27", "buzzer:1", "orange", [] ],
+    [ "buzzer:2", "esp:GND.2", "black", [] ]
+  ],
+  "dependencies": {}
+}
